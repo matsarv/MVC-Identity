@@ -1,9 +1,9 @@
 ﻿@model Person
 
 <li class="row pyjamas" id="list-id-@Model.Id">
-    <div class="col-md-2">@Model.FirstName</div>
-    <div class="col-md-2">@Model.LastName</div>
-    <div class="col-md-3">@Model.Email</div>
+    <div class="col-md-2 col-centered">@Model.FirstName</div>
+    <div class="col-md-2 col-centered">@Model.LastName</div>
+    <div class="col-md-3 col-centered">@Model.Email</div>
     <div class="col-md-5">
         <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
         <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Details" asp-route-id="@Model.Id">Details</a>
