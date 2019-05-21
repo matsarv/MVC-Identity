@@ -1,0 +1,32 @@
+﻿@model PersonView
+@{
+    ViewData["Title"] = "People List";
+}
+
+<h2>Peoples List</h2>
+
+<br />
+<p><a class="btn btn-sm btn-primary" asp-controller="People" asp-action="Create" method="get">Create New</a></p>
+<hr />
+
+<div class="list-container">
+    <ul>
+        @foreach (var item in Model.persons)
+
+        {
+            @await Html.PartialAsync("_Person", item)
+        }
+    </ul>
+</div>
+
+<hr />
+
+
+
+
+
+
+
+
+
+
