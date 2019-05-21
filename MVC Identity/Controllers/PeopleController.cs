@@ -53,28 +53,21 @@ namespace MVC_Identity.Controllers
             return View();
         }
 
-
         // POST: People/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("FirstName,LastName,Email")] Person person)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _personService.CreatePerson(person);
-                    
-                    return RedirectToAction(nameof(Index));
-                }
 
-                //return RedirectToAction(nameof(person));
-                return View(person);
-            }
-            catch
+            if (ModelState.IsValid)
             {
-                return View();
+                _personService.CreatePerson(person);
+
+                return RedirectToAction(nameof(Index));
             }
+
+            return View(person);
+
         }
 
         // GET: People/Edit/5
@@ -100,28 +93,21 @@ namespace MVC_Identity.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit([Bind("Id,FirstName,LastName,Email")] int id, Person person)
         {
-            try
+
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                bool succeeded = _personService.EditPerson(person);
+
+                if (succeeded)
                 {
-                    bool succeeded = _personService.EditPerson(person);
-
-                    if (succeeded)
-                    {
-                        return RedirectToAction(nameof(Index));
-                    }
-
-                    return NotFound();
-
+                    return RedirectToAction(nameof(Index));
                 }
 
-                //return RedirectToAction(nameof(Index));
-                return View(person);
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(person);
+
         }
 
         // GET: People/Delete/5
@@ -148,35 +134,24 @@ namespace MVC_Identity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)
         {
-            try
+
+            if (id == null)
             {
-
-                if (id == null)
-                {
-                    return NotFound();
-                }
-
-                Person person = _personService.FindPerson((int)id);
-
-                if (person == null)
-                {
-                    return NotFound();
-                }
-
-                _personService.DeletePerson((int)id);
-
-                return RedirectToAction(nameof(Index));
-
+                return NotFound();
             }
-            catch
+
+            Person person = _personService.FindPerson((int)id);
+
+            if (person == null)
             {
-                return View();
+                return NotFound();
             }
+
+            _personService.DeletePerson((int)id);
+
+            return RedirectToAction(nameof(Index));
+
         }
-
-
-
-
 
     }
 }

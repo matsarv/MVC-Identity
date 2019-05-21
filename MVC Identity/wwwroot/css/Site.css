@@ -1,2 +1,15 @@
 ﻿body {
+    background-color: #3e3e3e;
+    color: white;
 }
+
+.row.pyjamas:nth-child(odd) {
+    background-color: #b6b6b6;
+    border-radius: 4px;
+}
+
+.row.pyjamas:nth-child(even) {
+    background-color: #d4d4d4;
+    border-radius: 4px;
+}
+

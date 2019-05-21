@@ -1,16 +1,13 @@
 ﻿@model Person
 
-<li class="row partial" id="list-id-@Model.Id">
-
-
+<li class="row pyjamas" id="list-id-@Model.Id">
     <div class="col-md-2">@Model.FirstName</div>
     <div class="col-md-2">@Model.LastName</div>
     <div class="col-md-3">@Model.Email</div>
     <div class="col-md-5">
-        <a id="edit" class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        <a id="edit" class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-        <a id="delete" class="btn btn-sm btn-primary m-1" s" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+        <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
     </div>
-
 </li>
 

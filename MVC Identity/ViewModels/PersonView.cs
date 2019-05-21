@@ -8,6 +8,5 @@ namespace MVC_Identity.Models
     public class PersonView
     {
         public List<Person> persons = new List<Person>();
-        //public string SearchString { get; set; }
     }
 }
