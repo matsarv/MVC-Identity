@@ -3,7 +3,6 @@
     color: white;
 }
 
-
 .row.pyjamas:nth-child(odd) {
     background-color: #b6b6b6;
     border-radius: 4px;
@@ -11,13 +10,10 @@
 }
 
 .row.pyjamas:nth-child(even) {
-    background-color: #d4d4d4;
+    background-color: #cfcfcf;
     border-radius: 4px;
     margin-top: 1px;
 }
-
-
-
 
 .col-centered {
     margin-top: 6px;

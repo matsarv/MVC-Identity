@@ -12,16 +12,13 @@ namespace MVC_Data.Models
     {
         PersonView pv = new PersonView();
 
-        private int idCount = 1;
+        private int idCount = 3;
 
         public MockPersonService()
         {
-            pv.persons.Add(new Person() { Id = 0, FirstName = "Nisse", LastName = "Person", Email = "nisse.person@xx.se" });
-            pv.persons.Add(new Person() { Id = 1, FirstName = "Nisse", LastName = "Karlsson", Email = "nisse.karlsson@xx.se" });
-            pv.persons.Add(new Person() { Id = 2, FirstName = "Kalle", LastName = "Nilsson", Email = "kalle.nilsson@xx.se" });
-            pv.persons.Add(new Person() { Id = 3, FirstName = "Kalle", LastName = "Karlsson", Email = "kalle.karlsson@xx.se" });
-            pv.persons.Add(new Person() { Id = 4, FirstName = "Pelle", LastName = "Nilsson", Email = "pelle.nilsson@xx.se" });
-            pv.persons.Add(new Person() { Id = 5, FirstName = "Pelle", LastName = "Person", Email = "pelle.Person@xx.se" });
+            pv.persons.Add(new Person() { Id = 0, FirstName = "11Nisse", LastName = "Karlsson", Email = "kalle.karlsson@ab.se" });
+            pv.persons.Add(new Person() { Id = 1, FirstName = "Pelle", LastName = "Persson", Email = "pelle.persson@ab.se" });
+            pv.persons.Add(new Person() { Id = 2, FirstName = "Nisse", LastName = "Nilsson", Email = "nisse.nilsson@ab.se" });
         }
 
         public Person CreatePerson(Person person)

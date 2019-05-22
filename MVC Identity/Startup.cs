@@ -33,6 +33,7 @@ namespace MVC_Identity
             // Service for using a Mock
             //services.AddSingleton<IPersonService, MockPersonService>();
 
+            //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-2.2&tabs=visual-studio
             //DB Database Context
             services.AddDbContext<PeopleDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -40,6 +41,7 @@ namespace MVC_Identity
             services.AddScoped<IPersonService, PersonService>();
             //DB
 
+            //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/?view=aspnetcore-2.2
             //services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
