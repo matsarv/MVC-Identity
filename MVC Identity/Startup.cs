@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,7 +32,8 @@ namespace MVC_Identity
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            // Dependency Injection
+            services.AddScoped<IPersonService, PersonService>();
             // Service for using a Mock
             //services.AddSingleton<IPersonService, MockPersonService>();
 
@@ -37,9 +41,33 @@ namespace MVC_Identity
             //DB Database Context
             services.AddDbContext<PeopleDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //DB Dependency Injection
-            services.AddScoped<IPersonService, PersonService>();
-            //DB
+
+            // Able to inject our User/Role/SignIn Manager´s
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PeopleDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {   // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
+
+                // User settings.
+                //options.User.RequireUniqueEmail = true;
+                // Lockout settings.
+                //options.Lockout.AllowedForNewUsers = true;
+                //options.Lockout.MaxFailedAccessAttempts = 3;
+                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+            });
+
+            //services.ConfigureApplicationCookie(option => { option.LoginPath = "/Logins/Index"; });
+
+            services.Configure<PasswordHasherOptions>(option =>
+            {// default 10_000 is getting old so we incress it to be more on the safe side
+                option.IterationCount = 100_000;
+            });
 
             //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/?view=aspnetcore-2.2
             //services.AddMvc();
@@ -56,6 +84,8 @@ namespace MVC_Identity
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

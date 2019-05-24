@@ -61,7 +61,7 @@ namespace MVC_Identity.Controllers
 
             if (ModelState.IsValid)
             {
-                _personService.CreatePerson(person);
+                 _personService.CreatePerson(person);
 
                 return RedirectToAction(nameof(Index));
             }
