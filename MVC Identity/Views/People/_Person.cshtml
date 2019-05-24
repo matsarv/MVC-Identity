@@ -5,9 +5,15 @@
     <div class="col-md-2 col-centered">@Model.LastName</div>
     <div class="col-md-3 col-centered">@Model.Email</div>
     <div class="col-md-5">
-        <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        }
         <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-        <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        }
     </div>
 </li>
 

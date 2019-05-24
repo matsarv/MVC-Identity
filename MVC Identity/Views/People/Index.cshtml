@@ -7,7 +7,11 @@
 <h2>Peoples List</h2>
 
 <br />
-<p><a class="btn btn-sm btn-primary" asp-controller="People" asp-action="Create" method="get">Create New</a></p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p><a class="btn btn-sm btn-primary" asp-controller="People" asp-action="Create" method="get">Create New</a></p>
+}
+
 <hr />
 
 <div class="list-container">

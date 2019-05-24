@@ -14,7 +14,7 @@ namespace MVC_Identity.Database
     {
 
         // Rebuild Project
-        // Add-Migration init_people
+        // Add-Migration init
         // Rebuild Project
         // Update-Database
 
