@@ -24,7 +24,6 @@ namespace MVC_Identity.Models
 
         public Person CreatePerson(Person person)
         {
-
             _db.Add(person);
             _db.SaveChanges();
 
@@ -39,16 +38,6 @@ namespace MVC_Identity.Models
         public Person FindPerson(int id)
         {
             return _db.Persons.SingleOrDefault(Person => Person.Id == id);
-
-            //foreach (Person item in pv.persons)
-            //{
-            //    if (item.Id == id)
-            //    {
-            //        return item;
-            //    }
-            //}
-
-            //return null;
         }
 
         public bool EditPerson(Person person)
@@ -68,20 +57,6 @@ namespace MVC_Identity.Models
 
             return wasUpdated;
 
-            //foreach (Person orginal in pv.persons)
-            //{
-            //    if (orginal.Id == person.Id)
-            //    {
-            //        orginal.FirstName = person.FirstName;
-            //        orginal.LastName = person.LastName;
-            //        orginal.Email = person.Email;
-
-            //        wasUpdated = true;
-            //        break;
-            //    }
-            //}
-
-            //return wasUpdated;
         }
 
         public bool DeletePerson(int id)
@@ -100,18 +75,6 @@ namespace MVC_Identity.Models
 
             return wasRemoved;
 
-            //foreach (Person item in pv.persons)
-            //{
-            //    if (item.Id == id)
-            //    {
-            //        pv.persons.Remove(item);
-
-            //        wasRemoved = true;
-            //        break;
-            //    }
-            //}
-
-            //return wasRemoved;
         }
 
     }

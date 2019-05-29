@@ -60,7 +60,6 @@ namespace MVC_Identity.Controllers
             }
 
             return View(login);
-
         }
 
         public async Task<IActionResult> Logout()
@@ -109,7 +108,6 @@ namespace MVC_Identity.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteUser(string UserId)
         {
-
             if (string.IsNullOrWhiteSpace(UserId))
             {
                 return NotFound();
@@ -126,22 +124,19 @@ namespace MVC_Identity.Controllers
             await _userManager.DeleteAsync(user);
 
             return RedirectToAction(nameof(ManageUsers));
-
         }
-
 
         public IActionResult ManageRoles()
         {
             return View(_roleManager.Roles.ToList());
         }
 
-
-
         [HttpGet]
         public IActionResult AddRole()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddRole(string name)
@@ -192,7 +187,6 @@ namespace MVC_Identity.Controllers
             //}
             //return RedirectToAction(nameof(Login));
             return View();
-
         }
 
     }

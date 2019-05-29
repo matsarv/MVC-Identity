@@ -9,7 +9,6 @@ namespace MVC_Identity.Models
 {
     public class EditUserViewModel
     {
-
         public string Id { get; set; }
 
         [Required]
@@ -23,8 +22,6 @@ namespace MVC_Identity.Models
         public string Email { get; set; }
 
         //public IEnumerable<IdentityRole> RolesList { get; set; }
-
-        
         public List<IdentityUser> users = new List<IdentityUser>();
         public List<IdentityRole> roles = new List<IdentityRole>();
 

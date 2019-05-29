@@ -1,5 +1,4 @@
 ﻿@model Person
-
 @{
     ViewData["Title"] = "Delete";
 }
@@ -10,12 +9,9 @@
 <h3>Are you sure you want to delete this?</h3>
 
 <div>
-    
     <hr />
     <dl class="row">
-
         @*Removed Id*@
-
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -35,7 +31,6 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
-
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-sm btn-danger" /> 
     </form>

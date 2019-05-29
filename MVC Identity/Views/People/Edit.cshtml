@@ -1,5 +1,4 @@
 ﻿@model Person
-
 @{
     ViewData["Title"] = "Edit";
 }
@@ -8,15 +7,14 @@
 
 <h4>Person</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         @*Add post*@
         <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             @*Add hidden*@
             <input type="hidden" asp-for="Id" class="form-control" />
-
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -42,4 +40,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-

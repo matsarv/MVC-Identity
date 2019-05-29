@@ -23,9 +23,10 @@ namespace MVC_Identity.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            PersonView pv = new PersonView();
-
-            pv.persons = _personService.AllPersons();
+            PersonView pv = new PersonView
+            {
+                persons = _personService.AllPersons()
+            };
 
             return View(pv);
         }
@@ -49,17 +50,18 @@ namespace MVC_Identity.Controllers
         }
 
         //GET: People/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: People/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("FirstName,LastName,Email")] Person person)
         {
-
             if (ModelState.IsValid)
             {
                  _personService.CreatePerson(person);
@@ -68,7 +70,6 @@ namespace MVC_Identity.Controllers
             }
 
             return View(person);
-
         }
 
         // GET: People/Edit/5
@@ -94,7 +95,6 @@ namespace MVC_Identity.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit([Bind("Id,FirstName,LastName,Email")] int id, Person person)
         {
-
             if (ModelState.IsValid)
             {
                 bool succeeded = _personService.EditPerson(person);
@@ -108,7 +108,6 @@ namespace MVC_Identity.Controllers
             }
 
             return View(person);
-
         }
 
         // GET: People/Delete/5
@@ -132,11 +131,11 @@ namespace MVC_Identity.Controllers
         }
 
         // POST: People/Delete/5
+        [Authorize(Roles = "NormalUser")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)
         {
-
             if (id == null)
             {
                 return NotFound();
@@ -152,7 +151,6 @@ namespace MVC_Identity.Controllers
             _personService.DeletePerson((int)id);
 
             return RedirectToAction(nameof(Index));
-
         }
 
     }
