@@ -69,6 +69,19 @@ namespace MVC_Identity
                 option.IterationCount = 100_000;
             });
 
+            // claims roles // Use in Controller
+            //services.AddAuthorization(option =>
+            //{
+            //    option.AddPolicy("DeletePerson", policy =>
+            //    {
+            //        //policy.RequireClaim("Over18Claim");
+            //        policy.RequireRole("NormalUser");
+            //        //policy.RequireRole("Editor");
+
+
+            //    });
+            //});
+
             //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/?view=aspnetcore-2.2
             //services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Identity.Interface;
@@ -111,6 +112,7 @@ namespace MVC_Identity.Controllers
         }
 
         // GET: People/Delete/5
+        [Authorize(Roles = "NormalUser")]
         [HttpGet]
         public ActionResult Delete(int? id)
         {

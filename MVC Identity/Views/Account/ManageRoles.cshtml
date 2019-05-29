@@ -8,7 +8,21 @@
 <h4>People</h4>
 <hr />
 
-<a asp-controller="Account" asp-action="AddRole" class="btn btn-primary">Add role</a>
+<a asp-controller="Account" asp-action="AddRole" class="btn btn-sm btn-primary">Add Role</a>
 <br /><br />
 
+<div class="list-container">
+    <ul>
+        <li class="row">
+            <div class="col-md-4 col-centered">Token</div>
+            <div class="col-md-4 col-centered">Role</div>
+            <div class="col-md-4 col-centered">Options</div>
+        </li>
 
+        @foreach (var item in Model)
+
+        {
+            @await Html.PartialAsync("_Role", item)
+        }
+    </ul>
+</div>

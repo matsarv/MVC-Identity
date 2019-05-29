@@ -1,0 +1,20 @@
+﻿@model List<IdentityUser>
+@{
+    ViewData["Title"] = "AddUserToRole";
+}
+
+<h1>Add User To Role</h1>
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>
+                @Html.ActionLink("Give role", "AddUserToRoleSave", "Account", new { role = ViewBag.Role, userId = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+<a asp-controller="Account" asp-action="RoleList">Back to Roles list</a>

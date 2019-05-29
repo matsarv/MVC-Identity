@@ -37,9 +37,10 @@
                     <ul class="navbar-nav ml-auto">
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CreateUser">Add User</a>
-                            </li>
+                        <li class="nav-item">
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CreateUser">Add User</a>*@
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ManageUsers">Manage User</a>
+                        </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ManageRoles">Manage Roles</a>
                             </li>
@@ -64,6 +65,9 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="People" asp-action="Index">People</a>

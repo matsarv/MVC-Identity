@@ -3,8 +3,9 @@
 <li class="row pyjamas" id="list-id-@Model.Id">
     <div class="col-md-2 col-centered">@Model.FirstName</div>
     <div class="col-md-2 col-centered">@Model.LastName</div>
-    <div class="col-md-3 col-centered">@Model.Email</div>
-    <div class="col-md-5">
+    <div class="col-md-2 col-centered">@Model.Email</div>
+    <div class="col-md-3 col-centered"></div>
+    <div class="col-md-3">
         @if (User.Identity.IsAuthenticated)
         {
             <a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>

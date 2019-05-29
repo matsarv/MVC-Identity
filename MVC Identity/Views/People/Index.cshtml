@@ -1,10 +1,11 @@
 ﻿@model PersonView
 
+
 @{
     ViewData["Title"] = "People List";
 }
-
-<h2>Peoples List</h2>
+<h1>People</h1>
+<h4>Peoples List</h4>
 
 <br />
 @if (User.Identity.IsAuthenticated)
@@ -16,6 +17,15 @@
 
 <div class="list-container">
     <ul>
+        <li class="row">
+            <div class="col-md-2 col-centered">First Name</div>
+            <div class="col-md-2 col-centered">Last Name</div>
+            <div class="col-md-2 col-centered">Email</div>
+            <div class="col-md-3 col-centered">Roles</div>
+            <div class="col-md-3">Options</div>
+        </li>
+
+
         @foreach (var item in Model.persons)
 
         {

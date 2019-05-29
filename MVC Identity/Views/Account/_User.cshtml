@@ -1,0 +1,12 @@
+﻿@model IdentityUser
+@*@model EditUserViewModel*@
+
+<li class="row pyjamas">
+    <div class="col-md-2 col-centered">@Model.UserName</div>
+    <div class="col-md-2 col-centered">@Model.Email.</div>
+    <div class="col-md-4 col-centered"></div>
+    <div class="col-md-4"><span onclick="return confirm('Are you sure to delete?')"><a asp-action="DeleteUser" asp-route-userId="@Model.Id" class="btn btn-sm btn-primary m-1">Delete User</a></span></div>
+    @*<div class="col-md-6"><a asp-action="AddUserToRole" asp-route-role="@Model.UserName" class="btn btn-sm btn-primary m-1">Add Users to Role</a></div>*@
+</li>
+
+@*@Model.users.UserName*@

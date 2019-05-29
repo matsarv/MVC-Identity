@@ -12,5 +12,11 @@ namespace MVC_Identity.Controllers
         {
             return View();
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
     }
 }

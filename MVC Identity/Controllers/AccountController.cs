@@ -70,6 +70,13 @@ namespace MVC_Identity.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult ManageUsers()
+        {
+            return View(_userManager.Users.ToList());
+        }
+
+
+
         [HttpGet]
         public IActionResult CreateUser()
         {
@@ -87,7 +94,7 @@ namespace MVC_Identity.Controllers
                 if (result.Succeeded)
                 {
                     ViewBag.msg = "User was created.";
-                    return RedirectToAction("CreateUser");
+                    return RedirectToAction("ManageUsers");
                 }
                 else
                 {
@@ -98,6 +105,31 @@ namespace MVC_Identity.Controllers
             return View(createUser);
         }
 
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteUser(string UserId)
+        {
+
+            if (string.IsNullOrWhiteSpace(UserId))
+            {
+                return NotFound();
+            }
+
+            //IdentityUser user = _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(UserId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await _userManager.DeleteAsync(user);
+
+            return RedirectToAction(nameof(ManageUsers));
+
+        }
+
+
         public IActionResult ManageRoles()
         {
             return View(_roleManager.Roles.ToList());
@@ -105,6 +137,63 @@ namespace MVC_Identity.Controllers
 
 
 
+        [HttpGet]
+        public IActionResult AddRole()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddRole(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return View();
+            }
+
+            var result = await _roleManager.CreateAsync(new IdentityRole(name));
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("ManageRoles");
+
+            }
+
+            return View(name);
+        }
+
+
+        [HttpGet]
+        public IActionResult AddUserToRole(string role)
+        {
+            ViewBag.Role = role;
+
+            return View(_userManager.Users.ToList());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddUserToRoleSave(string userId, string role)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            var result = await _userManager.AddToRoleAsync(user, role);
+
+            return RedirectToAction(nameof(ManageRoles));
+        }
+
+        // GET: /Account/AccessDenied
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied(string returnUrl = null)
+        {
+            // workaround
+            //if (Request.Cookies["Identity.External"] != null)
+            //{
+            //    return RedirectToAction(nameof(ExternalLoginCallback), returnUrl);
+            //}
+            //return RedirectToAction(nameof(Login));
+            return View();
+
+        }
 
     }
 }

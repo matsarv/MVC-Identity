@@ -19,9 +19,9 @@ namespace MVC_Identity
                 roleManager.CreateAsync(role).Wait();
             }
 
-            if (!roleManager.RoleExistsAsync("User").Result)
+            if (!roleManager.RoleExistsAsync("NormalUser").Result)
             {
-                IdentityRole role = new IdentityRole("User");
+                IdentityRole role = new IdentityRole("NormalUser");
                 // Add custom properties
                 roleManager.CreateAsync(role).Wait();
             }
@@ -43,7 +43,7 @@ namespace MVC_Identity
 
             }
 
-            if (userManager.FindByNameAsync("NormalUser").Result == null)
+            if (userManager.FindByNameAsync("Mats").Result == null)
             {
                 IdentityUser user = new IdentityUser();
                 user.Email = "mats@ab.se";

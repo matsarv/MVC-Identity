@@ -1,0 +1,8 @@
+﻿@model IdentityRole
+
+<li class="row pyjamas">
+    <div class="col-md-4 col-centered">@Model.Id</div>
+    <div class="col-md-4 col-centered">@Model.Name</div>
+    <div class="col-md-4"><a asp-action="AddUserToRole" asp-route-role="@Model.Name" class="btn btn-sm btn-primary m-1">Add Users to Role</a></div>
+</li>
+

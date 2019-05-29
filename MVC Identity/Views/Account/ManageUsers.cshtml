@@ -1,0 +1,31 @@
+﻿@model List<IdentityUser>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<h1>Manage Users</h1>
+
+
+<h4>People</h4>
+<hr />
+
+<a asp-controller="Account" asp-action="CreateUser" class="btn btn-sm btn-primary">Create User</a>
+<br /><br />
+
+<div class="list-container">
+    <ul>
+        <li class="row">
+            <div class="col-md-2 col-centered">Name</div>
+            <div class="col-md-2 col-centered">Email</div>
+            <div class="col-md-4 col-centered"></div>
+            <div class="col-md-4 col-centered">Options</div>
+        </li>
+
+        @foreach (var item in Model)
+
+        {
+            @await Html.PartialAsync("_User", item)
+        }
+    </ul>
+</div>
