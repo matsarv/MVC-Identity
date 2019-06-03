@@ -1,20 +1,35 @@
 ﻿@model List<IdentityUser>
 @{
-    ViewData["Title"] = "AddUserToRole";
+    ViewData["Title"] = "Add User To Role";
 }
 
 <h1>Add User To Role</h1>
 
-<table>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.UserName</td>
-            <td>
-                @Html.ActionLink("Give role", "AddUserToRoleSave", "RolesAdmin", new { role = ViewBag.Role, userId = item.Id })
-            </td>
-        </tr>
-    }
-</table>
+<h4>Roles</h4>
+<hr />
 
-<a asp-controller="RolesAdmin" asp-action="Index">Back to Roles list</a>
+<div class="list-container">
+    <ul>
+        <li class="row">
+            <div class="col-md-2 col-centered">Name</div>
+            <div class="col-md-2 col-centered"></div>
+            <div class="col-md-4 col-centered"></div>
+            <div class="col-md-4 col-centered">Options</div>
+        </li>
+        @foreach (var item in Model)
+
+        {
+            <li class="row pyjamas">
+                <div class="col-md-4 col-centered">@item.UserName</div>
+                <div class="col-md-4 col-centered"></div>
+                <div class="col-md-4">
+                    @Html.ActionLink("Give role", "AddUserToRoleSave", "RolesAdmin", new { role = ViewBag.Role, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+<div>
+    <a asp-controller="RolesAdmin" asp-action="Index">Back to List</a>
+</div>

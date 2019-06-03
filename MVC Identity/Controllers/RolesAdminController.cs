@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MVC_Identity.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -28,14 +30,14 @@ namespace MVC_Identity.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddRole()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddRole(string name)
+        public async Task<IActionResult> Create(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {

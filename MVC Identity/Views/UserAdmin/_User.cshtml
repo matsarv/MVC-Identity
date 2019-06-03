@@ -3,8 +3,13 @@
 
 <li class="row pyjamas">
     <div class="col-md-2 col-centered">@Model.UserName</div>
-    <div class="col-md-2 col-centered">@Model.Email.</div>
+    <div class="col-md-2 col-centered">@Model.Email</div>
     <div class="col-md-4 col-centered"></div>
-    <div class="col-md-4"><span onclick="return confirm('Are you sure to delete?')"><a asp-action="DeleteUser" asp-route-userId="@Model.Id" class="btn btn-sm btn-primary m-1">Delete</a></span></div>
+    
+    <div class="col-md-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1">Edit</a>
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1">Details</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1">Delete</a>
+    </div>
 </li>
 

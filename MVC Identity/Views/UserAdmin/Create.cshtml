@@ -1,12 +1,12 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@*@using Microsoft.AspNetCore.Identity*@
 @model CreateUserVM
 @{
-    ViewData["Title"] = "CreateUser";
+    ViewData["Title"] = "Create Identity User";
 }
 
-<h1>CreateUser</h1>
+<h1>Create Identity User</h1>
 
-<h4>Peoples List</h4>
+<h4>Person</h4>
 <hr />
 
 @if (ViewBag.msg != null)
@@ -26,7 +26,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateUser" method="post">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
@@ -50,10 +50,13 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-sm btn-primary" /> |
-                <a asp-controller="UserAdmin" asp-action="Index">Back to Roles list</a>
+                <input type="submit" value="Create" class="btn btn-sm btn-primary" /> 
             </div>
         </form>
     </div>
 </div>
 
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

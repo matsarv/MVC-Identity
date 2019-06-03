@@ -30,13 +30,13 @@ namespace MVC_Identity.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateUser()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserVM createUser)
+        public async Task<IActionResult> Create(CreateUserVM createUser)
         {
             if (ModelState.IsValid)
             {
@@ -57,17 +57,36 @@ namespace MVC_Identity.Controllers
             return View(createUser);
         }
 
+
         [HttpGet]
-        //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteUser(string UserId)
+        public async Task<ActionResult> Delete(string id)
         {
-            if (string.IsNullOrWhiteSpace(UserId))
+            if (string.IsNullOrWhiteSpace(id))
             {
                 return NotFound();
             }
 
             //IdentityUser user = _userManager.FindByIdAsync(id);
-            var user = await _userManager.FindByIdAsync(UserId);
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+        // POST: People/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirm(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
+
+            //IdentityUser user = _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
 
             if (user == null)
             {
@@ -79,5 +98,80 @@ namespace MVC_Identity.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: People/Details/5
+        public async Task<IActionResult> Details(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
+
+            //IdentityUser user = _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditConfirm([Bind("Id,UserName,Email")] string id, IdentityUser identityUser)
+        {
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
+
+            //IdentityUser user = _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.UserName = identityUser.UserName;
+            user.Email = identityUser.Email;
+
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                ViewBag.msg = "User was updated.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.errorlist = result.Errors;
+            }
+
+            return View(user);
+
+
+        }
     }
 }
