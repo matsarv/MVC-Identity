@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserAdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -23,8 +25,7 @@ namespace MVC_Identity.Controllers
             _signInManager = signInManager;
         }
 
-
-                       public IActionResult Index()
+        public IActionResult Index()
         {
             return View(_userManager.Users.ToList());
         }
@@ -170,7 +171,6 @@ namespace MVC_Identity.Controllers
             }
 
             return View(user);
-
 
         }
     }

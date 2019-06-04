@@ -41,6 +41,7 @@ namespace MVC_Identity.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+
     }
 
 

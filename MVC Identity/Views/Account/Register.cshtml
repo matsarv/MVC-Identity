@@ -1,59 +1,45 @@
 ﻿@model CreateUserVM
 @{
-    ViewData["Title"] = "Create Identity User";
+    ViewData["Title"] = "Create Login Account";
 }
 
-<h1>Create Identity User</h1>
+<h1>Create Login Account</h1>
 
-<h4>Person</h4>
+<h4>Peoples List</h4>
 <hr />
 
 @if (ViewBag.msg != null)
 {
-    <p style="color:green">ViewBag.msg</p>
-}
-
-@if (ViewBag.errorlist != null)
-{
-    <ul>
-        @foreach (var item in (IEnumerable<IdentityError>)ViewBag.errorlist)
-        {
-            <li>@item.Description</li>
-        }
-    </ul>
+    <p style="color:red">Status: @ViewBag.msg</p>
 }
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" method="post">
+        <form asp-action="Register" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
+                <input asp-for="UserName" class="form-control" value="aa"/>
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" value="aa@ab.se"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" value="!Sommar2019"/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+                <input asp-for="ConfirmPassword" class="form-control" value="!Sommar2019"/>
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>

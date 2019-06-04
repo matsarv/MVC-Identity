@@ -30,20 +30,22 @@ namespace MVC_Identity.Models
                     {
                         FirstName = "Kalle",
                         LastName = "Karlsson",
-                        Email = "kalle.karlsson@ab.se"
-
+                        Email = "kalle.karlsson@ab.se",
+                        Phone = "08-123456"
                     },
                     new Person
                     {
                         FirstName = "Pelle",
                         LastName = "Persson",
-                        Email = "pelle.persson@ab.se"
+                        Email = "pelle.persson@ab.se",
+                        Phone = "031-123456"
                     },
                     new Person
                     {
                         FirstName = "Nisse",
                         LastName = "Nilsson",
-                        Email = "nisse.nilsson@ab.se"
+                        Email = "nisse.nilsson@ab.se",
+                        Phone = "042-123456"
                     }
 
                 );

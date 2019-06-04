@@ -19,12 +19,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
+                <input asp-for="UserName" class="form-control" value="Mats" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" value="!Sommar2019" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
@@ -34,3 +34,9 @@
         </form>
     </div>
 </div>
+
+<div>
+    <a asp-action="Register">Missing account? Create one!</a>
+</div>
+
+<br />

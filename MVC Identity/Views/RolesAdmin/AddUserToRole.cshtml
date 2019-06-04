@@ -5,7 +5,9 @@
 
 <h1>Add User To Role</h1>
 
-<h4>Roles</h4>
+<h4>Role</h4>
+<br />
+<h3>Give user access to the @ViewBag.Role role</h3>
 <hr />
 
 <div class="list-container">
@@ -17,13 +19,12 @@
             <div class="col-md-4 col-centered">Options</div>
         </li>
         @foreach (var item in Model)
-
         {
             <li class="row pyjamas">
                 <div class="col-md-4 col-centered">@item.UserName</div>
                 <div class="col-md-4 col-centered"></div>
                 <div class="col-md-4">
-                    @Html.ActionLink("Give role", "AddUserToRoleSave", "RolesAdmin", new { role = ViewBag.Role, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
+                    @Html.ActionLink("Assign Role", "AddUserToRoleSave", "RolesAdmin", new { role = ViewBag.Role, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
                 </div>
             </li>
         }

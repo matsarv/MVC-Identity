@@ -34,7 +34,7 @@ namespace MVC_Identity.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string name)
@@ -43,7 +43,7 @@ namespace MVC_Identity.Controllers
             {
                 return View();
             }
-
+            
             var result = await _roleManager.CreateAsync(new IdentityRole(name));
 
             if (result.Succeeded)
@@ -72,7 +72,6 @@ namespace MVC_Identity.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
 
     }
 }

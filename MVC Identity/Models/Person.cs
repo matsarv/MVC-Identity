@@ -25,5 +25,8 @@ namespace MVC_Identity.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
     }
 }

@@ -32,21 +32,20 @@
 
                     @*ID Add Identity*@
                     <ul class="navbar-nav ml-auto">
-                        @if (User.IsInRole("Admin"))
-                        {
-                        <li class="nav-item">
-                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CreateUser">Add User</a>*@
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UserAdmin" asp-action="Index">Manage Identity User</a>
-                        </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="RolesAdmin" asp-action="Index">Manage Identity Roles</a>
-                            </li>
-                        }
-
                         @if (User.Identity.IsAuthenticated)
                         {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    @*<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CreateUser">Add User</a>*@
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="UserAdmin" asp-action="Index">Manage Identity User</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="RolesAdmin" asp-action="Index">Manage Identity Roles</a>
+                                </li>
+                            }
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout @User.Identity.Name</a>
                             </li>
                         }
                         else
@@ -55,7 +54,6 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
                         }
-
                     </ul>
                     @*ID*@
 
@@ -66,10 +64,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="People" asp-action="Index">People</a>
-                        </li>
-
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="People" asp-action="Index">People</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

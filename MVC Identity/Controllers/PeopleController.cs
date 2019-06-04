@@ -10,6 +10,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
+    [Authorize(Roles = "Admin,NormalUser")]
     public class PeopleController : Controller
     {
         IPersonService _personService;
@@ -50,17 +51,15 @@ namespace MVC_Identity.Controllers
         }
 
         //GET: People/Create
-        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: People/Create
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("FirstName,LastName,Email")] Person person)
+        public IActionResult Create([Bind("FirstName,LastName,Email,Phone")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +92,7 @@ namespace MVC_Identity.Controllers
         // POST: People/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind("Id,FirstName,LastName,Email")] int id, Person person)
+        public IActionResult Edit([Bind("Id,FirstName,LastName,Email,Phone")] int id, Person person)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +110,6 @@ namespace MVC_Identity.Controllers
         }
 
         // GET: People/Delete/5
-        [Authorize(Roles = "NormalUser")]
         [HttpGet]
         public ActionResult Delete(int? id)
         {
@@ -131,7 +129,6 @@ namespace MVC_Identity.Controllers
         }
 
         // POST: People/Delete/5
-        [Authorize(Roles = "NormalUser")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)

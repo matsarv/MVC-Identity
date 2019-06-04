@@ -27,6 +27,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
+        
     </dl>
 </div>
 
@@ -34,11 +35,10 @@
     @if (User.Identity.IsAuthenticated)
     {
         <a asp-controller="UserAdmin" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>
-        <span onclick="return confirm('Are you sure to delete?')">
-            <a asp-controller="UserAdmin" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
-        </span>
+        <a asp-controller="UserAdmin" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
     }
 </div>
+
 <br />
 <div>
     <a asp-action="Index">Back to List</a>

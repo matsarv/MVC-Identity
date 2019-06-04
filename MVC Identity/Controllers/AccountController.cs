@@ -11,7 +11,6 @@ namespace MVC_Identity.Controllers
 {
     public class AccountController : Controller
     {
-
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -27,6 +26,42 @@ namespace MVC_Identity.Controllers
 
         [AllowAnonymous]
         [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(CreateUserVM createUser)
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityUser user = new IdentityUser() { UserName = createUser.UserName, Email = createUser.Email };
+                var CreateResult = await _userManager.CreateAsync(user, createUser.Password);
+
+                if (CreateResult.Succeeded)
+                {
+                    var role = "NormalUser";
+                    var result = await _userManager.AddToRoleAsync(user, role);
+
+                    ViewBag.msg = "User was created.";
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ViewBag.errorlist = CreateResult.Errors;
+                }
+            }
+
+            return View(createUser);
+
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
@@ -37,7 +72,6 @@ namespace MVC_Identity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM login)
         {
-
             if (ModelState.IsValid)
             {
                 var LoginResult = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, false, false);
@@ -76,118 +110,128 @@ namespace MVC_Identity.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult CreateUser()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserVM createUser)
-        {
-            if (ModelState.IsValid)
-            {
-                IdentityUser user = new IdentityUser() { UserName = createUser.UserName, Email = createUser.Email };
-                var result = await _userManager.CreateAsync(user, createUser.Password);
 
-                if (result.Succeeded)
-                {
-                    ViewBag.msg = "User was created.";
-                    return RedirectToAction("ManageUsers");
-                }
-                else
-                {
-                    ViewBag.errorlist = result.Errors;
-                }
-            }
 
-            return View(createUser);
-        }
 
-        [HttpGet]
+
+
+
+
+
+
+
+
+
+
+
+        //[HttpGet]
+        //public IActionResult CreateUser()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> CreateUser(CreateUserVM createUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        IdentityUser user = new IdentityUser() { UserName = createUser.UserName, Email = createUser.Email };
+        //        var result = await _userManager.CreateAsync(user, createUser.Password);
+
+        //        if (result.Succeeded)
+        //        {
+
+        //            ViewBag.msg = "User was created.";
+        //            return RedirectToAction("Login");
+        //        }
+        //        else
+        //        {
+        //            ViewBag.errorlist = result.Errors;
+        //        }
+        //    }
+
+        //    return View(createUser);
+        //}
+
+        //[HttpGet]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteUser(string UserId)
-        {
-            if (string.IsNullOrWhiteSpace(UserId))
-            {
-                return NotFound();
-            }
-
-            //IdentityUser user = _userManager.FindByIdAsync(id);
-            var user = await _userManager.FindByIdAsync(UserId);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            await _userManager.DeleteAsync(user);
-
-            return RedirectToAction(nameof(ManageUsers));
-        }
-
-        public IActionResult ManageRoles()
-        {
-            return View(_roleManager.Roles.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult AddRole()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddRole(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                return View();
-            }
-
-            var result = await _roleManager.CreateAsync(new IdentityRole(name));
-
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ManageRoles");
-
-            }
-
-            return View(name);
-        }
+        //public async Task<IActionResult> DeleteUser(string UserId)
+        //{
+        //    if (string.IsNullOrWhiteSpace(UserId))
+        //    {
+        //        return NotFound();
+        //    }
 
 
-        [HttpGet]
-        public IActionResult AddUserToRole(string role)
-        {
-            ViewBag.Role = role;
+        //    var user = await _userManager.FindByIdAsync(UserId);
 
-            return View(_userManager.Users.ToList());
-        }
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-        [HttpGet]
-        public async Task<IActionResult> AddUserToRoleSave(string userId, string role)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-            var result = await _userManager.AddToRoleAsync(user, role);
+        //    await _userManager.DeleteAsync(user);
 
-            return RedirectToAction(nameof(ManageRoles));
-        }
+        //    return RedirectToAction(nameof(ManageUsers));
+        //}
 
-        // GET: /Account/AccessDenied
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult AccessDenied(string returnUrl = null)
-        {
-            // workaround
-            //if (Request.Cookies["Identity.External"] != null)
-            //{
-            //    return RedirectToAction(nameof(ExternalLoginCallback), returnUrl);
-            //}
-            //return RedirectToAction(nameof(Login));
-            return View();
-        }
+        //public IActionResult ManageRoles()
+        //{
+        //    return View(_roleManager.Roles.ToList());
+        //}
+
+        //[HttpGet]
+        //public IActionResult AddRole()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> AddRole(string name)
+        //{
+        //    if (string.IsNullOrWhiteSpace(name))
+        //    {
+        //        return View();
+        //    }
+
+        //    var result = await _roleManager.CreateAsync(new IdentityRole(name));
+
+        //    if (result.Succeeded)
+        //    {
+        //        return RedirectToAction("ManageRoles");
+
+        //    }
+
+        //    return View(name);
+        //}
+
+
+        //[HttpGet]
+        //public IActionResult AddUserToRole(string role)
+        //{
+        //    ViewBag.Role = role;
+
+        //    return View(_userManager.Users.ToList());
+        //}
+
+        //[HttpGet]
+        //public async Task<IActionResult> AddUserToRoleSave(string userId, string role)
+        //{
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    var result = await _userManager.AddToRoleAsync(user, role);
+
+        //    return RedirectToAction(nameof(ManageRoles));
+        //}
+
+        //// GET: /Account/AccessDenied
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public IActionResult AccessDenied(string returnUrl = null)
+        //{
+        //    return View();
+        //}
 
     }
 }
