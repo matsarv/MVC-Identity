@@ -4,10 +4,19 @@
     <div class="col-md-4 col-centered">@Model.Id</div>
     <div class="col-md-4 col-centered">@Model.Name</div>
     <div class="col-md-4">
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-danger m-1" title="To be done">Edit</a>
-        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-danger m-1" title="To be done">Details</a>
-        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger m-1" title="To be done">Delete</a>
-        <a asp-action="AddUserToRole" asp-route-role="@Model.Name" class="btn btn-sm btn-primary m-1">Add User</a>
+        @if (@Model.Name == "Admin" || @Model.Name == "NormalUser")
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-dark m-1 disabled" title="To be done">Edit</a>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1" title="To be done">Details</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-dark m-1 disabled" title="To be done">Delete</a>
+        }
+        else
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-dark m-1 disabled" title="To be done">Edit</a>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1" title="To be done">Details</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1" title="To be done">Delete</a>
+        }
+        @*<a asp-action="AddUserToRole" asp-route-role="@Model.Name" class="btn btn-sm btn-primary m-1">Add User</a>*@
     </div>
 </li>
 

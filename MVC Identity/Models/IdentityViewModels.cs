@@ -59,12 +59,12 @@ namespace MVC_Identity.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        
-        //public string SecurityStamp { get; set; }
+    }
 
-        //public IEnumerable<IdentityRole> RolesList { get; set; }
-        //public List<IdentityUser> users = new List<IdentityUser>();
-        //public List<IdentityRole> roles = new List<IdentityRole>();
+    public class RoleUsersViewModel
+    {
+        public IdentityRole role { get; set; }
+        public IList<IdentityUser> users { get; set; }
 
     }
 

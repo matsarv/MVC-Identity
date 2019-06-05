@@ -1,0 +1,93 @@
+﻿@*@model IdentityRole*@
+@model RoleUsersViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h1>Role Details</h1>
+<h4>Role</h4>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.role.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.role.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.role.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.role.Name)
+        </dd>
+
+
+    </dl>
+</div>
+
+<div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @foreach (var item in Model.users)
+        {
+            @if (Model.role.Name == "Admin" || Model.role.Name == "NormalUser")
+            {
+                <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
+                <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Delete</a>
+            }
+            else
+            {
+         
+                <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
+                <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.role.Id" class="btn btn-sm btn-primary">Delete</a>
+                break;
+
+            }
+        }
+    }
+</div>
+
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<hr class="bg-light" />
+
+<h1>Users in Role</h1>
+<h4>Person</h4>
+<hr />
+<div>
+    <a asp-action="AddUserToRole" asp-route-role="@Model.role.Name" class="btn btn-sm btn-primary m-1">Add User</a>
+</div>
+
+<div class="list-container">
+    <ul>
+        <li class="row">
+            <div class="col-md-4 col-centered">Name</div>
+            <div class="col-md-4 col-centered">Id</div>
+            <div class="col-md-4 col-centered">Options</div>
+        </li>
+        @foreach (var item in Model.users)
+        {
+            <li class="row pyjamas">
+                <div class="col-md-4 col-centered">@item.UserName</div>
+                <div class="col-md-4 col-centered">@item.Id</div>
+                <div class="col-md-4">
+                    @if (item.UserName == "Admin")
+                    {
+                        @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-dark m-1 disabled" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
+                    }
+                        @*  @Html.ActionLink("Remove User", "RemoveUserFromRoleSave", "RolesAdmin", new { role = ViewBag.Role }, new { @class = "btn btn-sm btn-primary m-1" })*@
+                </div>
+            </li>
+        }
+    </ul>
+</div>
