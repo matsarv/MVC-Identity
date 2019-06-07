@@ -16,9 +16,9 @@ namespace MVC_Data.Models
 
         public MockPersonService()
         {
-            pv.persons.Add(new Person() { Id = 0, FirstName = "11Nisse", LastName = "Karlsson", Email = "kalle.karlsson@ab.se" });
-            pv.persons.Add(new Person() { Id = 1, FirstName = "Pelle", LastName = "Persson", Email = "pelle.persson@ab.se" });
-            pv.persons.Add(new Person() { Id = 2, FirstName = "Nisse", LastName = "Nilsson", Email = "nisse.nilsson@ab.se" });
+            pv.persons.Add(new Person() { Id = 0, FirstName = "11Nisse", LastName = "Karlsson", Email = "kalle.karlsson@ab.se", Phone = "08-123456" });
+            pv.persons.Add(new Person() { Id = 1, FirstName = "Pelle", LastName = "Persson", Email = "pelle.persson@ab.se", Phone = "031-123456" });
+            pv.persons.Add(new Person() { Id = 2, FirstName = "Nisse", LastName = "Nilsson", Email = "nisse.nilsson@ab.se", Phone = "042-123456" });
         }
 
         public Person CreatePerson(Person person)

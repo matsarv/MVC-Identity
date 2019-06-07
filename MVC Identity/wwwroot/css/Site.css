@@ -25,3 +25,7 @@
     margin-right: auto;
     width: 50%;
 }
+.container {
+    display: inline-block;
+    white-space: nowrap;
+}

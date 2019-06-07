@@ -26,8 +26,6 @@ namespace MVC_Identity
                 roleManager.CreateAsync(role).Wait();
             }
 
-            //---------------------------------------------------->
-
             if (userManager.FindByNameAsync("Admin").Result == null)
             {
                 IdentityUser user = new IdentityUser();

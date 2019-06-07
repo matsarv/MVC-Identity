@@ -56,7 +56,6 @@ namespace MVC_Identity.Controllers
             return View(name);
         }
 
-
         [HttpGet]
         public IActionResult AddUserToRole(string role)
         {
@@ -84,7 +83,6 @@ namespace MVC_Identity.Controllers
 
             return RedirectToAction(nameof(Details), "RolesAdmin", new { id = newRole.Id });
         }
-
 
         [HttpGet]
         public async Task<ActionResult> Delete(string id)
@@ -127,7 +125,6 @@ namespace MVC_Identity.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
 
         public async Task<IActionResult> Details(string id)
         {

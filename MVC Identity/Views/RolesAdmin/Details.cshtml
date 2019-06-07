@@ -23,8 +23,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.role.Name)
         </dd>
-
-
     </dl>
 </div>
 
@@ -40,7 +38,6 @@
             }
             else
             {
-         
                 <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
                 <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.role.Id" class="btn btn-sm btn-primary">Delete</a>
                 break;
@@ -60,6 +57,7 @@
 <h1>Users in Role</h1>
 <h4>Person</h4>
 <hr />
+
 <div>
     <a asp-action="AddUserToRole" asp-route-role="@Model.role.Name" class="btn btn-sm btn-primary m-1">Add User</a>
 </div>
@@ -85,7 +83,6 @@
                     {
                         @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
                     }
-                        @*  @Html.ActionLink("Remove User", "RemoveUserFromRoleSave", "RolesAdmin", new { role = ViewBag.Role }, new { @class = "btn btn-sm btn-primary m-1" })*@
                 </div>
             </li>
         }

@@ -58,7 +58,6 @@ namespace MVC_Identity.Controllers
             return View(createUser);
         }
 
-
         [HttpGet]
         public async Task<ActionResult> Delete(string id)
         {
@@ -134,7 +133,6 @@ namespace MVC_Identity.Controllers
             }
             return View(user);
         }
-
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]

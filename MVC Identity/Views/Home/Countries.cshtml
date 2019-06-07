@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<h1>Countries</h1>
+<br />
+
+@if (User.IsInRole("Admin"))
+{
+<p>No CRUD implementation. Focus on Identity.</p>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <br />
+        <h2>Sveden</h2>
+        <img src="~/img/Sverige-Sweden-icon.png" />
+        <h3>Cities</h3>
+        <div class="row">
+            <div class="col-md-6">Stockholm</div>
+            <div class="col-md-6 container">1 515 017</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Gothenburg</div>
+            <div class="col-md-6 container">599 011</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Malmoe</div>
+            <div class="col-md-6 container">316 588</div>
+            <br />
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <br />
+        <h2>Norway</h2>
+        <img src="~/img/Norge-Norway-icon.png" />
+        <h3>Cities</h3>
+        <div class="row">
+            <div class="col-md-6">Oslo</div>
+            <div class="col-md-6 container">1 000 467</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Bergen</div>
+            <div class="col-md-6 container">255 464</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Stavanger</div>
+            <div class="col-md-6 container">222 697</div>
+            <br />
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <br />
+        <h2>Denmark</h2>
+        <img src="~/img/Danmark-Denmark-icon.png" />
+        <h3>Cities</h3>
+        <div class="row">
+            <div class="col-md-6">Copenhagen</div>
+            <div class="col-md-6 container">1 320 629</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Aarhus</div>
+            <div class="col-md-6 container">277 086 </div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Odense</div>
+            <div class="col-md-6 container">179 601</div>
+            <br />
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <br />
+        <h2>Finland</h2>
+        <img src="~/img/Suomi-Finland-icon.png" />
+        <h3>Cities</h3>
+        <div class="row">
+            <div class="col-md-6">Helsinki</div>
+            <div class="col-md-6 container">1 176 976</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Tampere</div>
+            <div class="col-md-6 container">317 316</div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-6">Turku</div>
+            <div class="col-md-6 container">254 671</div>
+            <br />
+        </div>
+    </div>
+
+</div>
+
+}
