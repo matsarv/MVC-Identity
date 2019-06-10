@@ -1,16 +1,16 @@
 ﻿@model Person
 
 <li class="row pyjamas" id="list-id-@Model.Id">
-    <div class="col-md-2 col-centered">@Model.FirstName</div>
-    <div class="col-md-2 col-centered">@Model.LastName</div>
-    <div class="col-md-2 col-centered">@Model.Email</div>
+    <div class="col-md-2 col-vcentered">@Model.FirstName</div>
+    <div class="col-md-2 col-vcentered">@Model.LastName</div>
+    <div class="col-md-2 col-vcentered">@Model.Email</div>
     @if (User.IsInRole("Admin"))
     {
-        <div class="col-md-3 col-centered">@Model.Phone</div>
+        <div class="col-md-3 col-vcentered ">@Model.Phone</div>
     }
     else
     {
-        <div class="col-md-3 col-centered"></div>
+        <div class="col-md-3 col-vcentered"></div>
     }
     <div class="col-md-3">
         @if (User.Identity.IsAuthenticated)

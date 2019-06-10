@@ -15,10 +15,13 @@
     margin-top: 1px;
 }
 
-.col-centered {
+.col-vcentered {
     margin-top: 6px;
 }
 
+.col-vcentered-flag {
+    margin-top: 46px;
+}
 .center {
     display: block;
     margin-left: auto;

@@ -13,16 +13,16 @@
 <div class="list-container">
     <ul>
         <li class="row">
-            <div class="col-md-2 col-centered">Name</div>
-            <div class="col-md-2 col-centered"></div>
-            <div class="col-md-4 col-centered"></div>
-            <div class="col-md-4 col-centered">Options</div>
+            <div class="col-md-2 col-vcentered">Name</div>
+            <div class="col-md-2 col-vcentered"></div>
+            <div class="col-md-4 col-vcentered"></div>
+            <div class="col-md-4 col-vcentered">Options</div>
         </li>
         @foreach (var item in Model)
         {
             <li class="row pyjamas">
-                <div class="col-md-4 col-centered">@item.UserName</div>
-                <div class="col-md-4 col-centered"></div>
+                <div class="col-md-4 col-vcentered">@item.UserName</div>
+                <div class="col-md-4 col-vcentered"></div>
                 <div class="col-md-4">
                     @Html.ActionLink("Assign Role", "AddUserToRoleSave", "RolesAdmin", new { role = ViewBag.Role, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
                 </div>

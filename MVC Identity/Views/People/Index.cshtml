@@ -18,16 +18,16 @@
 <div class="list-container">
     <ul>
         <li class="row">
-            <div class="col-md-2 col-centered">First Name</div>
-            <div class="col-md-2 col-centered">Last Name</div>
-            <div class="col-md-2 col-centered">Email</div>
+            <div class="col-md-2 col-vcentered">First Name</div>
+            <div class="col-md-2 col-vcentered">Last Name</div>
+            <div class="col-md-2 col-vcentered">Email</div>
             @if (User.IsInRole("Admin"))
             {
-                <div class="col-md-3 col-centered">Phone</div>
+                <div class="col-md-3 col-vcentered">Phone</div>
             }
             else
             {
-                <div class="col-md-3 col-centered"></div>
+                <div class="col-md-3 col-vcentered"></div>
             }
             <div class="col-md-3">Options</div>
         </li>

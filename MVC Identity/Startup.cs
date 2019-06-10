@@ -16,6 +16,7 @@ using MVC_Data.Models;
 using MVC_Identity.Database;
 using MVC_Identity.Interface;
 using MVC_Identity.Models;
+using MVC_Identity.Service;
 
 namespace MVC_Identity
 {
@@ -34,6 +35,8 @@ namespace MVC_Identity
 
             // Dependency Injection
             services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<ICityService, CityService>();
             // Service for using a Mock
             //services.AddSingleton<IPersonService, MockPersonService>();
 

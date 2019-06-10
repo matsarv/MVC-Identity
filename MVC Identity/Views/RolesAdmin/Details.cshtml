@@ -65,15 +65,15 @@
 <div class="list-container">
     <ul>
         <li class="row">
-            <div class="col-md-4 col-centered">Name</div>
-            <div class="col-md-4 col-centered">Id</div>
-            <div class="col-md-4 col-centered">Options</div>
+            <div class="col-md-4 col-vcentered">Name</div>
+            <div class="col-md-4 col-vcentered">Id</div>
+            <div class="col-md-4 col-ventered">Options</div>
         </li>
         @foreach (var item in Model.users)
         {
             <li class="row pyjamas">
-                <div class="col-md-4 col-centered">@item.UserName</div>
-                <div class="col-md-4 col-centered">@item.Id</div>
+                <div class="col-md-4 col-vcentered">@item.UserName</div>
+                <div class="col-md-4 col-vcentered">@item.Id</div>
                 <div class="col-md-4">
                     @if (item.UserName == "Admin")
                     {

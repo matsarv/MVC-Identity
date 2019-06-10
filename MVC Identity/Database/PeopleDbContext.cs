@@ -22,6 +22,8 @@ namespace MVC_Identity.Database
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options) { }
 
         public DbSet<Person> Persons { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
         //DB
     }
 
