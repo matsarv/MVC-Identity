@@ -12,19 +12,39 @@
 
 <div class="list-container">
     <ul>
-        <li class="row">
+        @*<li class="row">
             <div class="col-md-4 col-vcentered">Country</div>
             <div class="col-md-4 col-vcentered"></div>
             <div class="col-md-4 col-vcentered">Options</div>
-        </li>
+        </li>*@
         @foreach (var item in Model)
         {
             @await Html.PartialAsync("_Country", item)
 
-            @*@foreach (var item in Model.cities)
+            @foreach (var item2 in item.Cities)
             {
-                @await Html.PartialAsync("_City", item)
-            }*@
+                @await Html.PartialAsync("_City", item2)
+                @foreach (var item3 in item2.People)
+                {
+                    @await Html.PartialAsync("_Person", item3)
+
+                }
+            }
+            <br />
         }
+
+
+
+
+        @*@foreach (var item in Model.cities)
+        {
+            @await Html.PartialAsync("_City", item)
+        }
+
+        @foreach (var item in Model.people)
+        {
+            @await Html.PartialAsync("_Person", item)
+        }*@
+
     </ul>
 </div>

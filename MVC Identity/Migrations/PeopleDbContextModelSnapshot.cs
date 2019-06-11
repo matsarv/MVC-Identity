@@ -60,6 +60,8 @@ namespace MVC_Identity.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CityId");
+
                     b.Property<string>("Email")
                         .IsRequired();
 
@@ -74,6 +76,8 @@ namespace MVC_Identity.Migrations
                     b.Property<string>("Phone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Persons");
                 });
@@ -241,9 +245,16 @@ namespace MVC_Identity.Migrations
 
             modelBuilder.Entity("MVC_Identity.Models.City", b =>
                 {
-                    b.HasOne("MVC_Identity.Models.Country", "Country")
+                    b.HasOne("MVC_Identity.Models.Country")
                         .WithMany("Cities")
                         .HasForeignKey("CountryId");
+                });
+
+            modelBuilder.Entity("MVC_Identity.Models.Person", b =>
+                {
+                    b.HasOne("MVC_Identity.Models.City")
+                        .WithMany("People")
+                        .HasForeignKey("CityId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

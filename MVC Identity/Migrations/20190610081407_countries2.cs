@@ -2,7 +2,7 @@
 
 namespace MVC_Identity.Migrations
 {
-    public partial class countries2 : Migration
+    public partial class Countries2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

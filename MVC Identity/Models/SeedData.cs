@@ -21,36 +21,7 @@ namespace MVC_Identity.Models
                     DbContextOptions<PeopleDbContext>>()))
             {
 
-                if (context.Persons.Any())
-                {
-                    return;   // DB has been seeded
-                }
-                context.Persons.AddRange(
-                    new Person
-                    {
-                        FirstName = "Kalle",
-                        LastName = "Karlsson",
-                        Email = "kalle.karlsson@ab.se",
-                        Phone = "08-123456"
-                    },
-                    new Person
-                    {
-                        FirstName = "Pelle",
-                        LastName = "Persson",
-                        Email = "pelle.persson@ab.se",
-                        Phone = "031-123456"
-                    },
-                    new Person
-                    {
-                        FirstName = "Nisse",
-                        LastName = "Nilsson",
-                        Email = "nisse.nilsson@ab.se",
-                        Phone = "042-123456"
-                    }
-
-                );
-
-                if (context.Persons.Any())
+                if (context.Countries.Any())
                 {
                     return;   // DB has been seeded
                 }
@@ -78,6 +49,7 @@ namespace MVC_Identity.Models
 
                 );
 
+
                 if (context.Cities.Any())
                 {
                     return;   // DB has been seeded
@@ -86,9 +58,9 @@ namespace MVC_Identity.Models
                     new City
                     {
                         Name = "Stockholm",
-                        Population= "1 515 017"
-
+                        Population= "1 515 017",
                         
+                       
 
                     },
                     new City
@@ -160,6 +132,36 @@ namespace MVC_Identity.Models
                     }
 
                 );
+
+                if (context.Persons.Any())
+                {
+                    return;   // DB has been seeded
+                }
+                context.Persons.AddRange(
+                    new Person
+                    {
+                        FirstName = "Kalle",
+                        LastName = "Karlsson",
+                        Email = "kalle.karlsson@ab.se",
+                        Phone = "08-123456"
+                    },
+                    new Person
+                    {
+                        FirstName = "Pelle",
+                        LastName = "Persson",
+                        Email = "pelle.persson@ab.se",
+                        Phone = "031-123456"
+                    },
+                    new Person
+                    {
+                        FirstName = "Nisse",
+                        LastName = "Nilsson",
+                        Email = "nisse.nilsson@ab.se",
+                        Phone = "042-123456"
+                    }
+
+                );
+
 
                 context.SaveChanges();
 

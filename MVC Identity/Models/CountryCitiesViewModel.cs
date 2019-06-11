@@ -7,7 +7,9 @@ namespace MVC_Identity.Models
 {
     public class CountryCitiesViewModel
     {
-        public Country country { get; set; }
-        public IList<City> cities { get; set; }
+        public List<Country> countries = new List<Country>();
+        public List<City> cities = new List<City>();
+        public List<Person> people = new List<Person>();
+
     }
 }

@@ -62,8 +62,8 @@ namespace MVC_Identity.Models
 
     public class RoleUsersViewModel
     {
-        public IdentityRole role { get; set; }
-        public IList<IdentityUser> users { get; set; }
+        public IdentityRole Role { get; set; }
+        public IList<IdentityUser> Users { get; set; }
 
     }
 

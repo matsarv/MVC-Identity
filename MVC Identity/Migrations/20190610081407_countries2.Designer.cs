@@ -11,7 +11,7 @@ namespace MVC_Identity.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
     [Migration("20190610081407_countries2")]
-    partial class countries2
+    partial class Countries2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

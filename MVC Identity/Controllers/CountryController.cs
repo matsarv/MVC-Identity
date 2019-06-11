@@ -12,27 +12,18 @@ namespace MVC_Identity.Controllers
     {
 
         ICountryService _countryService;
-        ICityService _cityService;
 
-        public CountryController(ICountryService countryService, ICityService cityService)
+        public CountryController(ICountryService countryService)
         {
             _countryService = countryService;
-            _cityService = cityService;
-
         }
-
 
         public IActionResult Index()
         {
-            var countries = _countryService.AllCountries();
-            //var cities = _cityService.AllCities();
-
-            //CountryCitiesViewModel vm = new CountryCitiesViewModel();
-
-            //vm.country = countries;
-            //vm.cities = cities;
+            List<Country> countries = _countryService.AllCountries();
 
             return View(countries);
+
         }
     }
 }

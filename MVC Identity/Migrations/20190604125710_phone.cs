@@ -2,7 +2,7 @@
 
 namespace MVC_Identity.Migrations
 {
-    public partial class phone : Migration
+    public partial class Phone : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

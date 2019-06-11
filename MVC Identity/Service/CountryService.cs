@@ -1,4 +1,5 @@
-﻿using MVC_Identity.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using MVC_Identity.Database;
 using MVC_Identity.Interface;
 using MVC_Identity.Models;
 using System;
@@ -18,13 +19,14 @@ namespace MVC_Identity.Service
             _db = peopleDBContext;
         }
 
-
-
-
-
         public List<Country> AllCountries()
         {
-            return _db.Countries.ToList();
+            var countries = _db.Countries
+                .Include(x => x.Cities)
+                .ThenInclude(x => x.People)
+                .ToList();
+
+            return countries;
         }
 
     }

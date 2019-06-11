@@ -17,5 +17,8 @@ namespace MVC_Identity.Models
 
         public List<City> Cities { get; set; }
 
+        
+
+
     }
 }

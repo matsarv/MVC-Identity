@@ -134,9 +134,9 @@ namespace MVC_Identity.Controllers
             }
 
             var roleusers = new RoleUsersViewModel();
-            roleusers.role = await _roleManager.FindByIdAsync(id);
+            roleusers.Role = await _roleManager.FindByIdAsync(id);
 
-            roleusers.users = await _userManager.GetUsersInRoleAsync(roleusers.role.Name);
+            roleusers.Users = await _userManager.GetUsersInRoleAsync(roleusers.Role.Name);
 
 
             if (roleusers == null)

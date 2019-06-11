@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Identity.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    [Migration("20190604125710_phone")]
-    partial class Phone
+    [Migration("20190611090449_City")]
+    partial class City
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,11 +21,48 @@ namespace MVC_Identity.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MVC_Identity.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CountryId");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Population")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("MVC_Identity.Models.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("MVC_Identity.Models.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CityId");
 
                     b.Property<string>("Email")
                         .IsRequired();
@@ -41,6 +78,8 @@ namespace MVC_Identity.Migrations
                     b.Property<string>("Phone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Persons");
                 });
@@ -204,6 +243,20 @@ namespace MVC_Identity.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("MVC_Identity.Models.City", b =>
+                {
+                    b.HasOne("MVC_Identity.Models.Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId");
+                });
+
+            modelBuilder.Entity("MVC_Identity.Models.Person", b =>
+                {
+                    b.HasOne("MVC_Identity.Models.City")
+                        .WithMany("People")
+                        .HasForeignKey("CityId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

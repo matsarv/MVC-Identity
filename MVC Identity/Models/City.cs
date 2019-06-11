@@ -20,5 +20,6 @@ namespace MVC_Identity.Models
         public string Population { get; set; }
 
         public Country Country { get; set; }
+        public List<Person> People { get; set; }
     }
 }

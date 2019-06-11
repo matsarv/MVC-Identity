@@ -12,16 +12,16 @@
 <div>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.role.Id)
+            @Html.DisplayNameFor(model => model.Role.Id)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.role.Id)
+            @Html.DisplayFor(model => model.Role.Id)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.role.Name)
+            @Html.DisplayNameFor(model => model.Role.Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.role.Name)
+            @Html.DisplayFor(model => model.Role.Name)
         </dd>
     </dl>
 </div>
@@ -29,17 +29,17 @@
 <div>
     @if (User.Identity.IsAuthenticated)
     {
-        @foreach (var item in Model.users)
+        @foreach (var item in Model.Users)
         {
-            @if (Model.role.Name == "Admin" || Model.role.Name == "NormalUser")
+            @if (Model.Role.Name == "Admin" || Model.Role.Name == "NormalUser")
             {
-                <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
-                <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Delete</a>
+                <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.Role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
+                <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.Role.Id" class="btn btn-sm btn-dark disabled">Delete</a>
             }
             else
             {
-                <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
-                <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.role.Id" class="btn btn-sm btn-primary">Delete</a>
+                <a asp-controller="RolesAdmin" asp-action="Edit" asp-route-id="@Model.Role.Id" class="btn btn-sm btn-dark disabled">Edit</a>
+                <a asp-controller="RolesAdmin" asp-action="Delete" asp-route-id="@Model.Role.Id" class="btn btn-sm btn-primary">Delete</a>
                 break;
 
             }
@@ -59,7 +59,7 @@
 <hr />
 
 <div>
-    <a asp-action="AddUserToRole" asp-route-role="@Model.role.Name" class="btn btn-sm btn-primary m-1">Add User</a>
+    <a asp-action="AddUserToRole" asp-route-role="@Model.Role.Name" class="btn btn-sm btn-primary m-1">Add User</a>
 </div>
 
 <div class="list-container">
@@ -69,7 +69,7 @@
             <div class="col-md-4 col-vcentered">Id</div>
             <div class="col-md-4 col-ventered">Options</div>
         </li>
-        @foreach (var item in Model.users)
+        @foreach (var item in Model.Users)
         {
             <li class="row pyjamas">
                 <div class="col-md-4 col-vcentered">@item.UserName</div>
@@ -77,11 +77,11 @@
                 <div class="col-md-4">
                     @if (item.UserName == "Admin")
                     {
-                        @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-dark m-1 disabled" })
+                        @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.Role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-dark m-1 disabled" })
                     }
                     else
                     {
-                        @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
+                        @Html.ActionLink("Remove Role", "RemoveUserFromRoleSave", "RolesAdmin", new { role = @Model.Role.Name, userId = item.Id }, new { @class = "btn btn-sm btn-primary m-1" })
                     }
                 </div>
             </li>
