@@ -1,4 +1,5 @@
 ﻿@model PersonView
+@*@model Country*@
 @{
     ViewData["Title"] = "People List";
 }
@@ -7,6 +8,7 @@
 
 <h4>Peoples List</h4>
 <br />
+<h4>Wrong place!</h4>
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -39,7 +41,6 @@
 </div>
 
 <hr />
-
 
 
 

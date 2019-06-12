@@ -66,18 +66,15 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
+                            @*<li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="People" asp-action="Index">People</a>
                             </li>
                             @if (User.IsInRole("Admin"))
-                            {
-                                @*<li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Countries">Countries</a>
-                                </li>*@
+                            {*@
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="Index">Countries</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="Index">Country - People</a>
                                 </li>
-                            }
+                            //}
 
                         }
                     </ul>

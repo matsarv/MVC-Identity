@@ -1,15 +1,24 @@
 ﻿@model Country
-@*@model CountryCitiesViewModel*@
 
-<li class="row pyjamas">
-    <div class="col-md-4 col-vcentered">@Model.Name</div>
-    <div class="col-md-4 col-vcentered">
-        <img src="~/img/@Model.Name-icon.png" />
-    </div>
+<br /><br />
+      <li class="row pyjamas">
+          <div class="col-md-4 col-vcentered">@Model.Name</div>
+          <div class="col-md-4 col-vcentered">
+              <img src="~/img/@Model.Name-icon.png" />
+          </div>
+          @if (User.Identity.IsAuthenticated)
+          {
+              @if (User.IsInRole("Admin"))
+              {
+                  <div class="col-md-2 col-vcentered-flag">
 
-    <div class="col-md-4 col-vcentered-flag">
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1">Edit</a>
-        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1">Details</a>
-        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary m-1">Delete</a>
-    </div>
-</li>
+                      @*< a  class="btn btn-sm btn-primary m-1" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>*@
+                      <a class="btn btn-sm btn-primary btn-block m-1" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+                      @*<a class="btn btn-sm btn-primary m-1" asp-action="Delete" asp-route-id="@Model.Id">Delete</a><br />*@
+                      <a class="btn btn-sm btn-primary btn-block m-1" asp-controller="City" asp-action="Create" asp-route-countryid="@Model.Id">New City</a>
+                  </div>
+
+              }
+          }
+          <div class="col-md-1"></div>
+      </li>

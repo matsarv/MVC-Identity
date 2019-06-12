@@ -1,4 +1,5 @@
-﻿using MVC_Identity.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using MVC_Identity.Database;
 using MVC_Identity.Interface;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace MVC_Identity.Models
             _db = peopleDBContext;
         }
         //DB
-        
+
         //PersonView pv = new PersonView();
 
         public Person CreatePerson(Person person)
@@ -32,6 +33,12 @@ namespace MVC_Identity.Models
 
         public List<Person> AllPersons()
         {
+            //var countries = _db.Countries
+            //    .Include(x => x.Cities)
+            //    .ThenInclude(x => x.People)
+            //    .ToList();
+
+            //return countries;
             return _db.Persons.ToList();
         }
 

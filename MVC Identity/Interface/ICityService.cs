@@ -9,6 +9,13 @@ namespace MVC_Identity.Interface
     public interface ICityService
     {
 
+
+
+        //Read
+        City FindCity(int id);
         List<City> AllCities();
+
+        //Update
+        bool EditCity(City city);
     }
 }

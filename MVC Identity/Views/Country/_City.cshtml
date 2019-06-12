@@ -1,9 +1,22 @@
 ﻿@model City
-@*@model CountryCitiesViewModel*@
 
-
+<br />
 <li class="row pyjamas">
     <div class="col-md-2 col-vcentered">@Model.Name</div>
     <div class="col-md-2 col-vcentered">Population: @Model.Population</div>
+    <div class="col-md-4 col-vcentered"></div>
+    <div class="col-md-2">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (User.IsInRole("Admin"))
+            {
+                @*<a class="btn btn-sm btn-primary m-1" asp-controller="City" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>*@
+                <a class="btn btn-sm btn-primary btn-block m-1" asp-controller="City" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+                @*<a class="btn btn-sm btn-primary m-1" asp-controller="City" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>*@
+            }
+            <a class="btn btn-sm btn-primary btn-block m-1 " asp-controller="People" asp-action="Create" asp-route-id="@Model.Id">New Person</a>
 
+        }
+    </div>
+    <div class="col-md-1"></div>
 </li>

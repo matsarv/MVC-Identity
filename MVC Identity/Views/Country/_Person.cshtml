@@ -5,6 +5,14 @@
     <div class="col-md-1 col-vcentered">@Model.FirstName</div>
     <div class="col-md-2 col-vcentered">@Model.LastName</div>
     <div class="col-md-3 col-vcentered">@Model.Email</div>
-    <div class="col-md-1 col-vcentered ">@Model.Phone</div>
-
+    @*<div class="col-md-1 col-vcentered ">@Model.Phone</div>*@
+    <div class="col-md-2">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @*<a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>*@
+            <a class="btn btn-sm btn-primary btn-block m-1" asp-controller="People" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+            @*<a class="btn btn-sm btn-primary m-1" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>*@
+        }
+    </div>
+    <div class="col-md-1"></div>
 </li>

@@ -51,21 +51,22 @@ namespace MVC_Identity.Controllers
         }
 
         //GET: People/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            ViewBag.CityId = id;
             return View();
         }
 
         // POST: People/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("FirstName,LastName,Email,Phone")] Person person)
+        public IActionResult Create([Bind("FirstName,LastName,Email,Phone,CityId")] Person person)
         {
             if (ModelState.IsValid)
             {
                  _personService.CreatePerson(person);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),"Country");
             }
 
             return View(person);
@@ -100,7 +101,7 @@ namespace MVC_Identity.Controllers
 
                 if (succeeded)
                 {
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Details), "People", new { id });
                 }
 
                 return NotFound();
@@ -110,6 +111,7 @@ namespace MVC_Identity.Controllers
         }
 
         // GET: People/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Delete(int? id)
         {
@@ -129,6 +131,7 @@ namespace MVC_Identity.Controllers
         }
 
         // POST: People/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)
@@ -147,7 +150,7 @@ namespace MVC_Identity.Controllers
 
             _personService.DeletePerson((int)id);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Country");
         }
 
     }

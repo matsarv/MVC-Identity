@@ -1,0 +1,57 @@
+﻿@model City
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+@if (User.IsInRole("Admin"))
+{
+
+    <div>
+        <h4>City</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Population)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Population)
+            </dd>
+            @*@if (User.IsInRole("Admin"))
+                {
+
+                }*@
+        </dl>
+
+    </div>
+    <div>
+        @*@if (User.Identity.IsAuthenticated)
+        {*@
+            <a asp-controller="City" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>
+            @*@if (User.IsInRole("Admin"))
+            {*@
+
+                @*<span onclick="return confirm('Are you really sure to delete?')"></span>*@
+                <a asp-controller="City" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
+            @*}
+        }*@
+    </div>
+    <br />
+}
+    <div>
+        <a asp-controller="Country" asp-action="Index">Back to List</a>
+    </div>
+

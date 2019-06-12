@@ -79,7 +79,7 @@ namespace MVC_Identity.Controllers
                 switch (LoginResult.ToString())
                 {
                     case "Succeeded":
-                        return RedirectToAction("Index", "People");
+                        return RedirectToAction("Index", "Country");
 
                     case "Failed":
                         ViewBag.msg = "Failed - Username of/and Password is incorrect";

@@ -49,12 +49,16 @@
     @if (User.Identity.IsAuthenticated)
     {
         <a asp-controller="People" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>
-        @*<span onclick="return confirm('Are you really sure to delete?')"></span>*@
-        <a asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
+        @if (User.IsInRole("Admin"))
+        {
+
+            @*<span onclick="return confirm('Are you really sure to delete?')"></span>*@
+            <a asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
+        }
     }
 </div>
 <br />
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Country" asp-action="Index">Back to List</a>
 </div>

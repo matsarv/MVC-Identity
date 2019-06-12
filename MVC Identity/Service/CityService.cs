@@ -27,6 +27,27 @@ namespace MVC_Identity.Service
             return _db.Cities.ToList();
         }
 
+        public City FindCity(int id)
+        {
+            return _db.Cities.SingleOrDefault(City => City.Id == id);
+        }
 
+        public bool EditCity(City city)
+        {
+            bool wasUpdated = false;
+
+            City orginal = _db.Cities.SingleOrDefault(item => item.Id == city.Id);
+            if (orginal != null)
+            {
+                orginal.Name = city.Name;
+                orginal.Population = city.Population;
+
+                _db.SaveChanges();
+                wasUpdated = true;
+            }
+
+            return wasUpdated;
+
+        }
     }
 }
