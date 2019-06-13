@@ -21,5 +21,7 @@ namespace MVC_Identity.Models
 
         public Country Country { get; set; }
         public List<Person> People { get; set; }
+
+        public int CountryId { get; set; }
     }
 }

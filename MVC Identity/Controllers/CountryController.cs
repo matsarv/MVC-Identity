@@ -25,5 +25,29 @@ namespace MVC_Identity.Controllers
             return View(countries);
 
         }
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Name")] Country country)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+
+
+                _countryService.CreateCountry(country);
+
+                return RedirectToAction(nameof(Index), "Country");
+            }
+
+            return View(country);
+        }
     }
 }

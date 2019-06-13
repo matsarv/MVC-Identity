@@ -21,6 +21,13 @@ namespace MVC_Identity.Service
         }
 
 
+        public City CreateCity(City city)
+        {
+            _db.Add(city);
+            _db.SaveChanges();
+
+            return city;
+        }
 
         public List<City> AllCities()
         {
@@ -47,6 +54,30 @@ namespace MVC_Identity.Service
             }
 
             return wasUpdated;
+
+        }
+
+        public bool DeleteCity(int id)
+        {
+            bool wasRemoved = false;
+
+            City city = _db.Cities.SingleOrDefault(item => item.Id == id);
+            if (city == null)
+            {
+                return wasRemoved;
+            }
+
+            Person person = _db.Persons.SingleOrDefault(item => item.CityId == id);
+            if (person != null)
+            {
+                return wasRemoved;
+            }
+
+            _db.Cities.Remove(city);
+            _db.SaveChanges();
+            wasRemoved = true;
+
+            return wasRemoved;
 
         }
     }

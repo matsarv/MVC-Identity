@@ -32,3 +32,10 @@
     display: inline-block;
     white-space: nowrap;
 }
+
+#country{
+    font-size:32px;
+}
+#city {
+    font-size: 20px;
+}

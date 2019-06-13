@@ -19,6 +19,15 @@ namespace MVC_Identity.Service
             _db = peopleDBContext;
         }
 
+        public Country CreateCountry(Country country)
+        {
+
+            _db.Add(country);
+            _db.SaveChanges();
+
+            return country;
+        }
+
         public List<Country> AllCountries()
         {
             var countries = _db.Countries

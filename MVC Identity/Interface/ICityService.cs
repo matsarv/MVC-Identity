@@ -9,7 +9,8 @@ namespace MVC_Identity.Interface
     public interface ICityService
     {
 
-
+        //Create
+        City CreateCity(City city);
 
         //Read
         City FindCity(int id);
@@ -17,5 +18,9 @@ namespace MVC_Identity.Interface
 
         //Update
         bool EditCity(City city);
+        
+        //Delete
+        bool DeleteCity(int id);
+        
     }
 }

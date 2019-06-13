@@ -1,0 +1,42 @@
+﻿@model Country
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>City</h4>
+<hr />
+
+<h3>Select Country from Dropdown list</h3>
+<br />
+<h3>NOTE! Country must not be created before!</h3>
+<br /><br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select style="width:400px" asp-for="Name" asp- class="btn btn-lg btn-secondary dropdown-toggle">
+                    <option value="">Select</option>
+                    <option value="USA">USA</option>
+                </select>
+
+
+                @*<select asp-for="Name" asp-items="Html.GetEnumSelectList(typeof(CountryName))" class="btn btn-lg btn-secondary dropdown-toggle"></select>*@
+                @*<select asp-for="Name" asp-items="Html.GetEnumSelectList<CountryName>()" class="btn btn-lg btn-secondary dropdown-toggle"></select>*@
+                @*<label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" autofocus="autofocus" />
+                    <span asp-validation-for="Name" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Country" asp-action="Index">Back to List</a>
+</div>
+

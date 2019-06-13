@@ -41,7 +41,26 @@ namespace MVC_Identity.Controllers
             return View(city);
         }
 
+        public IActionResult Create(int? id)
+        {
+            ViewBag.CountryId = id;
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Name,Population,CountryId")] City city)
+        {
+            if (ModelState.IsValid)
+            {
+                _cityService.CreateCity(city);
+
+                return RedirectToAction(nameof(Index), "Country");
+            }
+
+            return View(city);
+        }
+    
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -61,7 +80,7 @@ namespace MVC_Identity.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind("Id,Name,Populatio")] int id, City city)
+        public IActionResult Edit([Bind("Id,Name,Population")] int id, City city)
         {
             if (ModelState.IsValid)
             {
@@ -77,5 +96,48 @@ namespace MVC_Identity.Controllers
 
             return View(city);
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            City city = _cityService.FindCity((int)id);
+
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            return View(city);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            City city = _cityService.FindCity((int)id);
+
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            _cityService.DeleteCity((int)id);
+
+            return RedirectToAction(nameof(Index), "Country");
+        }
+
     }
+
 }
