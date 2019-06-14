@@ -1,0 +1,69 @@
+﻿@model List<Country>
+@*@model CountryCitiesViewModel*@
+@{
+    ViewData["Title"] = "Country";
+}
+
+<h1>Country</h1>
+
+
+
+<h4>Country / City / People List</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <p><a class="btn btn-sm btn-primary" asp-controller="Country" asp-action="Create" method="get">New Country</a></p>
+    }
+}
+
+
+<ul class="nav nav-tabs">
+    @foreach (var item in Model)
+    {
+        <li class="active">
+            <a href="#tab_@item.Id" data-toggle="tab">@item.Name</a> |
+        </li>
+    }
+
+</ul>
+
+
+
+
+<div class="list-container">
+
+
+
+    @*<ul>*@
+
+    @foreach (var item in Model)
+    {
+        @await Html.PartialAsync("_Country", item)
+
+        <div class="tab-content">
+            <div class="tab-pane" id="tab_@item.Id">
+                @foreach (var item2 in item.Cities)
+                {
+                    @await Html.PartialAsync("_City", item2)
+                    @foreach (var item3 in item2.People)
+                    {
+                        @await Html.PartialAsync("_Person", item3)
+
+                    }
+                }
+
+            </div>
+        </div>
+    }
+
+    @*</ul>*@
+
+    @*}*@
+</div>
+
+
+
+
+

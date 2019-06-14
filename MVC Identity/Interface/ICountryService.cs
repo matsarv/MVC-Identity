@@ -8,19 +8,17 @@ namespace MVC_Identity.Interface
 {
     public interface ICountryService
     {
-
         //Create
         Country CreateCountry(Country country);
 
         //Read
-        //Country FindCountry(int id);
+        Country FindCountry(int id);
         List<Country> AllCountries();
 
         //Update
         //bool EditCountry(Country country);
 
         //Delete
-        //bool DeleteCountry(int id);
-
+        bool DeleteCountry(int id);
     }
 }

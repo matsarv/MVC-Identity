@@ -16,10 +16,8 @@ namespace MVC_Identity.Service
 
         public CityService(PeopleDbContext peopleDBContext)
         {
-            //_peopleDBContext = peopleDBContext;
             _db = peopleDBContext;
         }
-
 
         public City CreateCity(City city)
         {

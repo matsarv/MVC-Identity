@@ -44,6 +44,7 @@ namespace MVC_Identity.Controllers
         public IActionResult Create(int? id)
         {
             ViewBag.CountryId = id;
+
             return View();
         }
 

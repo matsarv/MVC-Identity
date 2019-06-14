@@ -1,4 +1,4 @@
-﻿@model City
+﻿@model Country
 @{
     ViewData["Title"] = "Delete";
 }
@@ -8,7 +8,7 @@
 <h4>City</h4>
 <h3>Are you sure you want to delete this?</h3>
 <br />
-<h3>NOTE! All persons must be deleted before deleting a City!</h3>
+<h3>NOTE! All cities must be deleted before deleting a Country!</h3>
 
 <div>
     <hr />
@@ -20,12 +20,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Population)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Population)
-        </dd>
     </dl>
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
@@ -35,5 +29,5 @@
 
 <div>
     <a asp-controller="Country" asp-action="Index">Back to List</a> |
-    <a asp-controller="City" asp-action="Details" asp-route-id="@Model.Id">Back to Details</a>
+    <a asp-controller="Country" asp-action="Details" asp-route-id="@Model.Id">Back to Details</a>
 </div>

@@ -1,4 +1,4 @@
-﻿@model City
+﻿@model Country
 @{
     ViewData["Title"] = "Details";
 }
@@ -7,9 +7,11 @@
 
 @if (User.IsInRole("Admin"))
 {
+
     <div>
         <h4>City</h4>
         <hr />
+        <img src="~/img/@Model.Name-icon.png" />
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Name)
@@ -17,19 +19,13 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Name)
             </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Population)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Population)
-            </dd>
         </dl>
-    </div>
 
+    </div>
     <div>
-        <a asp-controller="City" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>
+        @*<a asp-controller="Country" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>*@
         @*<span onclick="return confirm('Are you really sure to delete?')"></span>*@
-        <a asp-controller="City" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
+        <a asp-controller="Country" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Delete</a>
     </div>
     <br />
 }

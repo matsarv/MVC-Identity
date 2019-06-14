@@ -15,13 +15,11 @@ namespace MVC_Identity.Service
 
         public CountryService(PeopleDbContext peopleDBContext)
         {
-            //_peopleDBContext = peopleDBContext;
             _db = peopleDBContext;
         }
 
         public Country CreateCountry(Country country)
         {
-
             _db.Add(country);
             _db.SaveChanges();
 
@@ -36,6 +34,35 @@ namespace MVC_Identity.Service
                 .ToList();
 
             return countries;
+        }
+
+        public Country FindCountry(int id)
+        {
+            return _db.Countries.SingleOrDefault(Country => Country.Id == id);
+        }
+
+        public bool DeleteCountry(int id)
+        {
+            bool wasRemoved = false;
+
+            Country country = _db.Countries.SingleOrDefault(item => item.Id == id);
+            if (country == null)
+            {
+                return wasRemoved;
+            }
+
+            City city= _db.Cities.SingleOrDefault(item => item.CountryId == id);
+            if (city != null)
+            {
+                return wasRemoved;
+            }
+
+            _db.Countries.Remove(country);
+            _db.SaveChanges();
+            wasRemoved = true;
+
+            return wasRemoved;
+
         }
 
     }

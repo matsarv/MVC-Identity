@@ -16,7 +16,6 @@ namespace MVC_Identity.Models
 
         public PersonService(PeopleDbContext peopleDBContext)
         {
-            //_peopleDBContext = peopleDBContext;
             _db = peopleDBContext;
         }
         //DB
@@ -33,12 +32,6 @@ namespace MVC_Identity.Models
 
         public List<Person> AllPersons()
         {
-            //var countries = _db.Countries
-            //    .Include(x => x.Cities)
-            //    .ThenInclude(x => x.People)
-            //    .ToList();
-
-            //return countries;
             return _db.Persons.ToList();
         }
 

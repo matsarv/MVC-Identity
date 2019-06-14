@@ -8,7 +8,6 @@ namespace MVC_Identity.Interface
 {
     public interface ICityService
     {
-
         //Create
         City CreateCity(City city);
 
@@ -21,6 +20,5 @@ namespace MVC_Identity.Interface
         
         //Delete
         bool DeleteCity(int id);
-        
     }
 }

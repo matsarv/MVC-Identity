@@ -8,41 +8,44 @@
 
 <h4>Peoples List</h4>
 <br />
-<h4>Wrong place!</h4>
 
-@if (User.Identity.IsAuthenticated)
+
+@if (User.IsInRole("NotInUse"))
 {
-    <p><a class="btn btn-sm btn-primary" asp-controller="People" asp-action="Create" method="get">Create New</a></p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p><a class="btn btn-sm btn-primary" asp-controller="People" asp-action="Create" method="get">Create New</a></p>
+    }
+
+    <hr />
+
+    <div class="list-container">
+        <ul>
+            <li class="row">
+                <div class="col-md-2 col-vcentered">First Name</div>
+                <div class="col-md-2 col-vcentered">Last Name</div>
+                <div class="col-md-2 col-vcentered">Email</div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="col-md-3 col-vcentered">Phone</div>
+                }
+                else
+                {
+                    <div class="col-md-3 col-vcentered"></div>
+                }
+                <div class="col-md-3">Options</div>
+            </li>
+            @foreach (var item in Model.persons)
+            {
+                @await Html.PartialAsync("_Person", item)
+            }
+        </ul>
+    </div>
+
+    <hr />
+
 }
-
-<hr />
-
-<div class="list-container">
-    <ul>
-        <li class="row">
-            <div class="col-md-2 col-vcentered">First Name</div>
-            <div class="col-md-2 col-vcentered">Last Name</div>
-            <div class="col-md-2 col-vcentered">Email</div>
-            @if (User.IsInRole("Admin"))
-            {
-                <div class="col-md-3 col-vcentered">Phone</div>
-            }
-            else
-            {
-                <div class="col-md-3 col-vcentered"></div>
-            }
-            <div class="col-md-3">Options</div>
-        </li>
-        @foreach (var item in Model.persons)
-        {
-            @await Html.PartialAsync("_Person", item)
-        }
-    </ul>
-</div>
-
-<hr />
-
-
-
-
-
+else
+{
+    <h5>Empty page</h5>
+}

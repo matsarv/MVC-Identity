@@ -75,6 +75,7 @@ namespace MVC_Identity.Controllers
             }
             return View(user);
         }
+        
         // POST: People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

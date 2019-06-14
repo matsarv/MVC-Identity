@@ -4,26 +4,29 @@
     ViewData["Title"] = "Country";
 }
 
-<h1>Country</h1>
 
-<h4>Country / City / People List</h4>
+
+
 
 @if (User.Identity.IsAuthenticated)
 {
     @if (User.IsInRole("Admin"))
     {
+        <h1>Country</h1>
+        <h4>Country / City / People List</h4>
         <p><a class="btn btn-sm btn-primary" asp-controller="Country" asp-action="Create" method="get">New Country</a></p>
+    }
+    else
+    {
+        <h1>People</h1>
+        <h4>People List</h4>
     }
 }
 
 
 <div class="list-container">
     <ul>
-        @*<li class="row">
-                <div class="col-md-4 col-vcentered">Country</div>
-                <div class="col-md-4 col-vcentered"></div>
-                <div class="col-md-4 col-vcentered">Options</div>
-            </li>*@
+
         @foreach (var item in Model)
         {
             @await Html.PartialAsync("_Country", item)
@@ -40,18 +43,10 @@
 
         }
 
-
-
-
-        @*@foreach (var item in Model.cities)
-            {
-                @await Html.PartialAsync("_City", item)
-            }
-
-            @foreach (var item in Model.people)
-            {
-                @await Html.PartialAsync("_Person", item)
-            }*@
-
     </ul>
 </div>
+
+
+
+
+
