@@ -19,18 +19,18 @@
 }
 
 
-        <ul class="nav nav-tabs">
-            @foreach (var item in Model)
-            {
-                
-            <li class="active">
-                <div class="btn btn-outline-primary m-2">
-                    <a href="#tab_@item.Id" data-toggle="tab">@item.Name</a>
-                </div>
-            </li>
-            }
+<ul class="nav nav-tabs">
+    @foreach (var item in Model)
+    {
 
-        </ul>
+        <li class="active">
+            <div class="btn btn-outline-primary m-2">
+                <a href="#tab_@item.Id" data-toggle="tab">@item.Name</a>
+            </div>
+        </li>
+    }
+
+</ul>
 
 
 
@@ -57,7 +57,7 @@
 
                     }
                 }
-      
+
             </div>
         </div>
     }
@@ -67,4 +67,8 @@
 
 </div>
 
+
+
+
+<hr />
 
