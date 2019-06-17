@@ -1,28 +1,33 @@
 ﻿@model Country
 
 <br /><br />
-      <li class="row pyjamas">
+<li class="row pyjamas">
 
-          @*<div class="col-md-4 col-vcentered">
-            <img src="~/img/@Model.Name-icon.png" width="128" height="128" />
-        </div>*@
-          @if (User.Identity.IsAuthenticated)
-          {
-              @if (User.IsInRole("Admin"))
-              {
-                  <div id="country" class="col-md-4 col-vcentered">@Model.Name</div>
-                  <div class="col-md-4 col-vcentered">
-                      <img src="~/img/@Model.Name-icon.png" width="128" height="128" />
-                  </div>
-                  <div class="col-md-2 col-vcentered-flag">
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <div id="country" class="col-md-4 col-vcentered">@Model.Name</div>
+            <div class="col-md-4 col-vcentered">
+                <img src="~/img/@Model.Name-icon.png" width="128" height="128" />
+            </div>
+            <div class="col-md-2 col-vcentered-flag">
 
-                      @*< a  class="btn btn-sm btn-primary m-1" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>*@
-                      <a class="btn btn-sm btn-primary btn-block m-1" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-                      @*<a class="btn btn-sm btn-primary m-1" asp-action="Delete" asp-route-id="@Model.Id">Delete</a><br />*@
-                      <a class="btn btn-sm btn-primary btn-block m-1" asp-controller="City" asp-action="Create" asp-route-id="@Model.Id">New City</a>
+                @*< a  class="btn btn-sm btn-primary m-1" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>*@
+                <a class="btn btn-sm btn-primary btn-block m-1" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+                @*<a class="btn btn-sm btn-primary m-1" asp-action="Delete" asp-route-id="@Model.Id">Delete</a><br />*@
+                <a class="btn btn-sm btn-primary btn-block m-1" asp-controller="City" asp-action="Create" asp-route-id="@Model.Id">New City</a>
 
-                  </div>
-              }
-          }
-          <div class="col-md-2"></div>
-      </li>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4">@Model.Name</div>
+            <div class="col-md-8"></div>
+
+        }
+
+    }
+
+    <div class="col-md-2"></div>
+</li>
