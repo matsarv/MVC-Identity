@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Identity.Interface;
@@ -14,6 +15,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class PeopleAPIController : ControllerBase

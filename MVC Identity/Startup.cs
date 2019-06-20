@@ -28,6 +28,9 @@ namespace MVC_Identity
         public Startup(IConfiguration config) { Configuration = config; }
         //DB
 
+        //API
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -85,6 +88,18 @@ namespace MVC_Identity
             //    });
             //});
 
+            //API
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000/")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
+
             //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/?view=aspnetcore-2.2
             //services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -102,6 +117,9 @@ namespace MVC_Identity
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            //API
+            app.UseCors();
 
             app.UseMvc(routes =>
             {
