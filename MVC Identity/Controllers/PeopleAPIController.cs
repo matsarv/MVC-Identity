@@ -57,6 +57,7 @@ namespace MVC_Identity.Controllers
         // POST: api/PeopleAPI
         [HttpPost]
         public Person Post([FromBody] Person person)
+        //public Person Post([FromBody] Person person)
         {
             if (ModelState.IsValid)
             {

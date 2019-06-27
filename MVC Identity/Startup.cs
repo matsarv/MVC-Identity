@@ -88,13 +88,13 @@ namespace MVC_Identity
             //    });
             //});
 
-            //API
+            //API https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-2.2
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:3000/")
+                    builder.WithOrigins("*")
                                         .AllowAnyHeader()
                                         .AllowAnyMethod();
                 });
@@ -119,7 +119,7 @@ namespace MVC_Identity
             app.UseAuthentication();
 
             //API
-            app.UseCors();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseMvc(routes =>
             {
