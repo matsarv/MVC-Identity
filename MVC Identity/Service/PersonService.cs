@@ -50,6 +50,7 @@ namespace MVC_Identity.Models
                 orginal.FirstName = person.FirstName;
                 orginal.LastName = person.LastName;
                 orginal.Email = person.Email;
+                orginal.Phone = person.Phone;
 
                 _db.SaveChanges();
                 wasUpdated = true;

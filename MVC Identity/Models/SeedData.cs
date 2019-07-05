@@ -171,7 +171,7 @@ namespace MVC_Identity.Models
                         FirstName = "Kalle",
                         LastName = "Karlsson",
                         Email = "kalle.karlsson@ab.se",
-                        Phone = "08-123456",
+                        Phone = "08123456",
                         CityId = 1
                     },
                     new Person
@@ -179,7 +179,7 @@ namespace MVC_Identity.Models
                         FirstName = "Pelle",
                         LastName = "Persson",
                         Email = "pelle.persson@ab.se",
-                        Phone = "08-123456",
+                        Phone = "08123456",
                         CityId = 1
                     },
                     new Person
@@ -187,7 +187,7 @@ namespace MVC_Identity.Models
                         FirstName = "Nisse",
                         LastName = "Nilsson",
                         Email = "nisse.nilsson@ab.se",
-                        Phone = "08-123456",
+                        Phone = "08123456",
                         CityId = 1
                     },
                     new Person
@@ -195,7 +195,7 @@ namespace MVC_Identity.Models
                         FirstName = "Pelle",
                         LastName = "Persson",
                         Email = "pelle.persson@ab.se",
-                        Phone = "031-123456",
+                        Phone = "031123456",
                         CityId = 2
                     },
                     new Person
@@ -203,7 +203,7 @@ namespace MVC_Identity.Models
                         FirstName = "Nisse",
                         LastName = "Nilsson",
                         Email = "nisse.nilsson@ab.se",
-                        Phone = "042-123456",
+                        Phone = "042123456",
                         CityId = 3
                     },
 
@@ -212,7 +212,7 @@ namespace MVC_Identity.Models
                         FirstName = "Kalle",
                         LastName = "Karlsson",
                         Email = "kalle.karlsson@ab.no",
-                        Phone = "08-123456",
+                        Phone = "08123456",
                         CityId = 4
                     },
                     new Person
@@ -220,7 +220,7 @@ namespace MVC_Identity.Models
                         FirstName = "Pelle",
                         LastName = "Persson",
                         Email = "pelle.persson@ab.no",
-                        Phone = "031-123456",
+                        Phone = "031123456",
                         CityId = 5
                     },
                     new Person
@@ -228,7 +228,7 @@ namespace MVC_Identity.Models
                         FirstName = "Nisse",
                         LastName = "Nilsson",
                         Email = "nisse.nilsson@ab.no",
-                        Phone = "042-123456",
+                        Phone = "042123456",
                         CityId = 6
                     },
 
@@ -237,7 +237,7 @@ namespace MVC_Identity.Models
                         FirstName = "Kalle",
                         LastName = "Karlsson",
                         Email = "kalle.karlsson@ab.dk",
-                        Phone = "08-123456",
+                        Phone = "08123456",
                         CityId = 7
                     },
                     new Person
@@ -245,7 +245,7 @@ namespace MVC_Identity.Models
                         FirstName = "Pelle",
                         LastName = "Persson",
                         Email = "pelle.persson@ab.dk",
-                        Phone = "031-123456",
+                        Phone = "031123456",
                         CityId = 8
                     },
                     new Person
@@ -253,7 +253,7 @@ namespace MVC_Identity.Models
                         FirstName = "Nisse",
                         LastName = "Nilsson",
                         Email = "nisse.nilsson@ab.dk",
-                        Phone = "042-123456",
+                        Phone = "042123456",
                         CityId = 9
                     },
 
@@ -262,7 +262,7 @@ namespace MVC_Identity.Models
                         FirstName = "Kalle",
                         LastName = "Karlsson",
                         Email = "kalle.karlsson@ab.fi",
-                        Phone = "08-123456",
+                        Phone = "08123456",
                         CityId = 10
                     },
                     new Person
@@ -270,7 +270,7 @@ namespace MVC_Identity.Models
                         FirstName = "Pelle",
                         LastName = "Persson",
                         Email = "pelle.persson@ab.fi",
-                        Phone = "031-123456",
+                        Phone = "031123456",
                         CityId = 11
                     },
                     new Person
@@ -278,7 +278,7 @@ namespace MVC_Identity.Models
                         FirstName = "Nisse",
                         LastName = "Nilsson",
                         Email = "nisse.nilsson@ab.fi",
-                        Phone = "042-123456",
+                        Phone = "042123456",
                         CityId = 12
                     }
 
